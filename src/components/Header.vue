@@ -63,19 +63,19 @@
 
 <template>
     <header class="h-[49px] flex px-4 py-1 w-100 gap-4">
-        <div class="flex items-center gap-5">
+        <div class="flex items-center gap-2 two:gap-5">
             <div class="h-full flex items-center justify-center gap-[6px]">
                 <div class="bg-orange-400 w-8 h-8 rounded-full"></div>
-                <h1 class="font-semibold font-['Noto Sans'] text-xl">reddit</h1>
+                <h1 class="hidden two:block font-semibold font-['Noto Sans'] text-xl">reddit</h1>
             </div>
-            <div :class="(menu)?'border':'hover:outline outline-1'" @click="handleMenu" class="flex h-[34px] w-[270px] gap-[6px] items-center cursor-pointer outline-gray-200 rounded-sm px-2">
+            <div :class="(menu)?'border':'hover:outline outline-1'" @click="handleMenu" class="flex h-[34px] three:w-[270px] gap-[6px] items-center cursor-pointer outline-gray-200 rounded-sm px-2">
                 <MdiSvg>{{ mdiHome }}</MdiSvg>
-                <p class="font-semibold flex-grow text-base">Home</p>
+                <p class="hidden three:block font-semibold flex-grow text-base">Home</p>
                 <MdiSvg>{{ mdiChevronDown }}</MdiSvg>
             </div>
         </div>
         <div class="flex-grow">
-            <input class="w-full h-full rounded-full border border-gray-200 bg-gray-100 px-2" type="text" placeholder="Search Reddit">
+            <input class="shrink-0 w-full h-full rounded-full border border-gray-200 bg-gray-100 px-2" type="text" placeholder="Search Reddit">
         </div>
         <div class="flex self-center items-center h-[32px] gap-2">
             <div
@@ -92,9 +92,9 @@
                 Advertise
             </div>
         </div>
-        <div @click="handleProfileMenu" class="flex items-center gap-[6px] cursor-pointer w-[200px] hover:outline outline-1 outline-gray-200 rounded-sm px-2">
+        <div @click="handleProfileMenu" class="flex items-center gap-[6px] cursor-pointer one:w-[200px] hover:outline outline-1 outline-gray-200 rounded-sm px-2">
             <div class="w-[24px] h-[24px] bg-red-400 rounded-md"></div>
-            <div class="flex flex-grow flex-col text-xs font-medium">
+            <div class="hidden one:flex flex flex-grow flex-col text-xs font-medium">
                 <p class="font-bold">Jolly</p> 
                 <p class="text-gray-400">1 karma</p>
             </div>
@@ -112,9 +112,5 @@
 </template>
 
 <style scoped>
-    /* h1 {
-        font-family: 'Noto Sans';
-        font-size: 19px;
-        font-weight: 600;
-    } */
+
 </style>
