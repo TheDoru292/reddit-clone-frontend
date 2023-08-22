@@ -11,10 +11,11 @@
     } from "@mdi/js";
     import { ref } from "vue";
     import ProfileMenuVue from "./ProfileMenu.vue";
+    import Menu from "./Menu.vue";
 
     const action = ref(null);
     const profileMenu = ref(false);
-    const profileMenuDiv = ref(null);
+    const menu = ref(false);
 
     function changeAction(item) {
         action.value = item;
@@ -25,6 +26,14 @@
             profileMenu.value = false;
         } else {
             profileMenu.value = true;
+        }
+    }
+
+    function handleMenu() {
+        if (menu.value == true) {
+            menu.value = false;
+        } else {
+            menu.value = true;
         }
     }
     
@@ -59,7 +68,7 @@
                 <div class="bg-orange-400 w-8 h-8 rounded-full"></div>
                 <h1 class="font-semibold font-['Noto Sans'] text-xl">reddit</h1>
             </div>
-            <div class="flex h-[34px] w-[270px] gap-[6px] items-center cursor-pointer hover:outline outline-1 outline-gray-200 rounded-sm px-2">
+            <div :class="(menu)?'border':'hover:outline outline-1'" @click="handleMenu" class="flex h-[34px] w-[270px] gap-[6px] items-center cursor-pointer outline-gray-200 rounded-sm px-2">
                 <MdiSvg>{{ mdiHome }}</MdiSvg>
                 <p class="font-semibold flex-grow text-base">Home</p>
                 <MdiSvg>{{ mdiChevronDown }}</MdiSvg>
@@ -83,7 +92,7 @@
                 Advertise
             </div>
         </div>
-        <div ref="profileMenuDiv" @click="handleProfileMenu" class="flex items-center gap-[6px] cursor-pointer w-[200px] hover:outline outline-1 outline-gray-200 rounded-sm px-2">
+        <div @click="handleProfileMenu" class="flex items-center gap-[6px] cursor-pointer w-[200px] hover:outline outline-1 outline-gray-200 rounded-sm px-2">
             <div class="w-[24px] h-[24px] bg-red-400 rounded-md"></div>
             <div class="flex flex-grow flex-col text-xs font-medium">
                 <p class="font-bold">Jolly</p> 
@@ -95,6 +104,10 @@
 
     <div class="absolute flex flex-col py-3 top-[50px] right-[16px] bottom-[100px] hmd:bottom-[25px] hsm:bottom-0 w-[253px] max-h-[545px] rounded-sm bg-white overflow-auto" v-if="profileMenu">
         <ProfileMenuVue @close="handleProfileMenu" />
+    </div>
+
+    <div class="absolute w-[270px] max-h-[450px] py-3 bg-white top-10 left-[128.5px] border border-t-0 overflow-auto" v-if="menu">
+        <Menu @close="handleMenu"/>
     </div>
 </template>
 
